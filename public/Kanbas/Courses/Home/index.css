@@ -1,0 +1,25 @@
+.wd-master-row {
+    max-width: 100%;
+}
+.wd-master-container {
+    padding: 0;
+}
+.wd-course-nav {
+    width: 150px;
+    position: sticky;
+    left: 0;
+}
+
+.wd-topbar-menu {
+    color: red;
+    background-color: white;
+    border: none;
+    margin-left: 50px;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    float: left;
+    padding-right:  var(--bs-breadcrumb-item-padding-x);
+    color: var(--bs-breadcrumb-divider-color);
+    content: var(--bs-breadcrumb-divider, ">");
+}

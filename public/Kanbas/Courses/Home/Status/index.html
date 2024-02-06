@@ -2,41 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Course Status and Schedule</title>
+  <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
+  <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/Kanbas/styles.css" />
+  <link rel="stylesheet" href="/Kanbas/Courses/Home/Status/index.css" />
 </head>
 <body>
-  <h4>Course Status</h4>
-  <table>
-    <tbody>
-    <tr>
-      <td>
-        <button>Unpublish</button>
-      </td>
-      <td>
-        <button>Publish</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-  <button>Import Existing Content</button>
-  <br/>
-  <button>Import From Commons</button>
-  <br/>
-  <button>Choose Home Page</button>
-  <br/>
-  
-  <h4>Coming Up</h4>
-  <h5><a href="/Kanbas/Calendar/screen.html">View Calendar</a></h5>
-  <table>
-    <tbody>
-    <tr>
-      <td>
-        <ul>
-          <li>CS5610</li>
-          <li>CS5800</li>
-        </ul>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="container mt-3">
+    <section id="course-status">
+      <div class="d-flex justify-content-between mb-3">
+        <button class="btn btn-outline-secondary">
+          <i class="fa fa-ban" aria-hidden="true"></i> Unpublish
+        </button>
+        <button class="btn btn-success">
+          <i class="fa fa-check-circle" aria-hidden="true"></i> Published
+        </button>
+      </div>
+      <section id="course-actions">
+        <div class="d-flex flex-column mb-3">
+          <button class="btn btn-light mb-2">
+            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Import Existing Content
+          </button>
+          <button class="btn btn-light mb-2">
+            <i class="fa fa-share-alt" aria-hidden="true"></i> Import from Commons
+          </button>
+          <button class="btn btn-light mb-2">
+            <i class="fa fa-home" aria-hidden="true"></i> Choose Home Page
+          </button>
+          <button class="btn btn-light mb-2">
+            <i class="fa fa-rss" aria-hidden="true"></i> View Course Stream
+          </button>
+          <button class="btn btn-light mb-2">
+            <i class="fa fa-bullhorn" aria-hidden="true"></i> New Announcement
+          </button>
+          <button class="btn btn-light mb-2">
+            <i class="fa fa-bar-chart" aria-hidden="true"></i> New Analytics
+          </button>
+          <button class="btn btn-light mb-2">
+            <i class="fa fa-bell" aria-hidden="true"></i> View Course Notifications
+          </button>
+        </div>
+      </section>
+    </section>
+    
+    <section id="todo">
+      <h5 class="mb-3">To Do</h5>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h6 class="card-title text-danger font-weight-bold">
+            Grade A1 - ENV + HTML
+          </h6>
+          <p class="card-text">100 points · Sep 18 at 11:59pm</p>
+        </div>
+      </div>
+      <!-- Additional to-do items here -->
+    </section>
+    
+    <section id="coming-up">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5>Coming Up</h5>
+        <a href="#" class="text-success">
+          <i class="fa fa-calendar" aria-hidden="true"></i> View Calendar
+        </a>
+      </div>
+      <div class="list-group">
+        <!-- Coming up items -->
+        <a href="#" class="list-group-item list-group-item-action">
+          <h6 class="text-danger font-weight-bold">Lecture - CS4550</h6>
+          <p>12631.202410 · Sep 7 at 11:45am</p>
+        </a>
+        <!-- Additional coming up items here -->
+      </div>
+    </section>
+  </div>
 </body>
 </html>
