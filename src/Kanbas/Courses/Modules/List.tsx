@@ -3,6 +3,7 @@ import "./index.css";
 import { modules } from "../../Database";
 import { FaEllipsisV, FaCheckCircle, FaPlusCircle } from "react-icons/fa";
 import { useParams } from "react-router";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 function ModuleList() {
   const { courseId } = useParams();
@@ -19,6 +20,9 @@ function ModuleList() {
             <option>Unpublish All</option>
           </select>
           <button>+ Module</button>
+          <button>
+            <BsThreeDotsVertical />
+          </button>
         </div>
       </div>
       <ul className="list-group wd-modules">
