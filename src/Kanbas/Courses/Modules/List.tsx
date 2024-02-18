@@ -11,7 +11,7 @@ function ModuleList() {
   const [selectedModule, setSelectedModule] = useState(modulesList[0]);
   return (
     <>
-      <div className="d-flex justify-content-end wd-flex-row-container mt-3">
+      <div className="d-flex justify-content-end wd-flex-row-container mt-3 me-1">
         <div>
           <button>Collapse All</button>
           <button>View Progress</button>

@@ -1,0 +1,36 @@
+.linkButton {
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #343a40;
+}
+
+.linkButtonIcon {
+    margin-right: 0.5rem;
+}
+
+.todoTitle {
+    font-weight: bold;
+}
+
+.todoLink {
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    text-decoration: none;
+}
+
+.todoDateIcon {
+    color: #dc3545;
+}
+
+.todoCourse,
+.todoTitleText {
+    color: #dc3545;
+}
+
+.todoAssignment {
+    color: #343a40;
+}
