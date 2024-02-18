@@ -10,8 +10,18 @@ function ModuleList() {
   const [selectedModule, setSelectedModule] = useState(modulesList[0]);
   return (
     <>
-      {/* <!-- Add buttons here --> */}
-      <ul className="list-group wd-modules mt-3">
+      <div className="d-flex justify-content-end wd-flex-row-container mt-3">
+        <div>
+          <button>Collapse All</button>
+          <button>View Progress</button>
+          <select>
+            <option>Publish All</option>
+            <option>Unpublish All</option>
+          </select>
+          <button>+ Module</button>
+        </div>
+      </div>
+      <ul className="list-group wd-modules">
         {modulesList.map((module) => (
           <li
             className="list-group-item"
