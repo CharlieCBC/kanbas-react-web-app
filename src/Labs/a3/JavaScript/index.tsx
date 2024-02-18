@@ -24,34 +24,35 @@ import FunctionDestructing from "./functions/FunctionDestructing";
 import PathParameters from "../routing/PathParameters";
 
 function JavaScript() {
-    console.log("Hello World!");
-    return(
-        <div>
-            <h1>JavaScript</h1>
-            <VariablesAndConstants/>
-            <VariableTypes/>
-            <BooleanVariables/>
-            <IfElse/>
-            <TernaryOperator/>
-            <ES5Functions/>
-            <ArrowFunctions/>
-            <ImpliedReturn/>
-            <FunctionParenthesisAndParameters/>
-            <WorkingWithArrays/>
-            <ArrayIndexAndLength/>
-            <AddingAndRemovingDataToFromArrays/>
-            <ForLoops/>
-            <MapFunction/>
-            <JsonStringify/>
-            <FindFunction/>
-            <FindIndex/>
-            <FilterFunction/>
-            <TemplateLiterals/>
-            <House/>
-            <Spreading/>
-            <Destructing/>
-            <FunctionDestructing/>
-        </div>
-    );
+  console.log("Hello World!");
+  return (
+    <div>
+      <h1>JavaScript</h1>
+      <VariablesAndConstants />
+      <VariableTypes />
+      <BooleanVariables />
+      <IfElse />
+      <TernaryOperator />
+      <ES5Functions />
+      <ArrowFunctions />
+      <ImpliedReturn />
+      <FunctionParenthesisAndParameters />
+      <WorkingWithArrays />
+      <ArrayIndexAndLength />
+      <AddingAndRemovingDataToFromArrays />
+      <ForLoops />
+      <MapFunction />
+      <JsonStringify />
+      <FindFunction />
+      <FindIndex />
+      <FilterFunction />
+      <TemplateLiterals />
+      <House />
+      <Spreading />
+      <Destructing />
+      <FunctionDestructing />
+    </div>
+  );
 }
-export default JavaScript
+
+export default JavaScript;

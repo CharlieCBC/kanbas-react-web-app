@@ -1,9 +1,11 @@
 .wd-master-row {
     max-width: 100%;
 }
+
 .wd-master-container {
     padding: 0;
 }
+
 .wd-course-nav {
     width: 150px;
 }
@@ -19,9 +21,9 @@
     color: red;
 }
 
-.breadcrumb-item+.breadcrumb-item::before {
+.breadcrumb-item + .breadcrumb-item::before {
     float: left;
-    padding-right:  var(--bs-breadcrumb-item-padding-x);
+    padding-right: var(--bs-breadcrumb-item-padding-x);
     color: var(--bs-breadcrumb-divider-color);
     content: var(--bs-breadcrumb-divider, ">");
 }
@@ -65,7 +67,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 0 8px 16px rgba(0,0,0,.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .15);
     border: none;
     margin-top: .125rem;
 }
