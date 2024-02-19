@@ -21,7 +21,7 @@ function TopBreadcrumb() {
   return (
     <div>
       <h4>
-        <div className="d-flex justify-content-between">
+        <div className="justify-content-between d-none d-md-flex">
           <div className="d-flex">
             <Link
               to={`/Kanbas/Courses/${courseId}/Home`}

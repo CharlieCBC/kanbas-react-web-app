@@ -15,7 +15,7 @@ function Status() {
   );
 
   return (
-    <div>
+    <div className="d-none d-xl-block">
       <div className="d-grid gap-2 mb-2">
         <Link to="#" className="linkButton">
           <FaFileImport className="linkButtonIcon" /> Import Existing Content

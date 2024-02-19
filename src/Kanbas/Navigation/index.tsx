@@ -79,7 +79,7 @@ function KanbasNavigation() {
   const { pathname } = useLocation();
 
   return (
-    <ul className="wd-kanbas-navigation">
+    <ul className="wd-kanbas-navigation d-none d-md-block">
       {links.map((link, index) => (
         <li
           key={index}

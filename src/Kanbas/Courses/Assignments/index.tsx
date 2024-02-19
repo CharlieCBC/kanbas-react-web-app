@@ -8,7 +8,7 @@ import {
 import { Link, useParams } from "react-router-dom";
 import { assignments } from "../../Database";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { AiOutlinePlus } from "react-icons/ai";
+
 function Assignments() {
   const { courseId } = useParams();
   const assignmentList = assignments.filter(
