@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { FaBars, FaGlasses } from "react-icons/fa";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { courses } from "../Database";
+import { courses } from "../../Database";
 
 function TopBreadcrumb() {
   const { courseId } = useParams();

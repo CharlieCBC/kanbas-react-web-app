@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { FaBars, FaGlasses } from "react-icons/fa";
-import { courses } from "../Database";
+import { courses } from "../../Database";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TopLeftModal from "./TopLeftModal";
 import TopRightDropdown from "./TopRightDropdown";

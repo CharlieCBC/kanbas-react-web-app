@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { courses } from "../Database";
-import TopBar from "../Courses/TopBar";
+import TopBar from "../Courses/TopBarComponents/TopBar";
 
 function Dashboard() {
   return (

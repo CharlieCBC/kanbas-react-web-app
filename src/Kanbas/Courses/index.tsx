@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom";
 import CourseNavigation from "./Navigation";
 import Modules from "./Modules";
 import Home from "./Home";
-import TopBreadcrumb from "./TopBreadcrumb";
+import TopBreadcrumb from "./TopBarComponents/TopBreadcrumb";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
 import { courses } from "../../Kanbas/Database";
 import "./index.css";
 import { Navigate, Route, Routes } from "react-router";
-import TopBar from "./TopBar"; // Assume your CSS is defined here
+import TopBar from "./TopBarComponents/TopBar";
 
 function Courses() {
   const { courseId } = useParams();
