@@ -1,0 +1,14 @@
+.dropdown-toggle {
+    background-color: transparent;
+    border: none;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    color: red;
+}
+
+.dropdown-item svg {
+    margin-right: 8px; /* Adjust space between icon and text */
+}
