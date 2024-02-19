@@ -9,7 +9,8 @@ import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
 import { courses } from "../../Kanbas/Database";
 import "./index.css";
-import { Navigate, Route, Routes } from "react-router"; // Assume your CSS is defined here
+import { Navigate, Route, Routes } from "react-router";
+import TopBar from "./TopBar"; // Assume your CSS is defined here
 
 function Courses() {
   const { courseId } = useParams();
@@ -17,6 +18,7 @@ function Courses() {
 
   return (
     <div>
+      <TopBar/>
       <TopBreadcrumb />
       <div className="course-container">
         <CourseNavigation />
