@@ -25,7 +25,7 @@ function AssignmentEditor() {
           </button>
         </div>
         <h3>Assignment Name</h3>
-        <input value={assignment?.title} className="form-control mb-2" />
+        <input value={assignmentId + " - " + assignment?.title} className="form-control mb-2" />
         <button onClick={handleSave} className="btn btn-success ms-2 float-end">
           Save
         </button>
