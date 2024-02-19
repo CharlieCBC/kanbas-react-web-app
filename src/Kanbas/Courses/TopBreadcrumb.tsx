@@ -9,31 +9,44 @@ function TopBreadcrumb() {
   const { pathname } = useLocation();
   const course = courses.find((course) => course._id === courseId);
 
+  // Ensure courseId is treated as a string, using an empty string as fallback
+  const safeCourseId = courseId || "";
+
+  const pathSegments = pathname
+    .split("/")
+    .filter(
+      (segment, index, array) => segment && index > array.indexOf(safeCourseId),
+    );
+
   return (
-      <div>
-        <h4>
-          <div className="d-flex justify-content-between">
-            <div className="d-flex">
-              <Link
-                  to={`/Kanbas/Courses/${courseId}/Home`}
-                  className="text-danger mt-2"
-                  style={{ textDecoration: "none" }}
-              >
-                <FaBars className="mx-2" />
-                {course ? course.number : "Course Number"}
-              </Link>
-              <div className="mt-1">
-                <MdOutlineKeyboardArrowRight />
-              </div>
-              <div className="mt-2">{pathname.split("/").pop()}</div>
+    <div>
+      <h4>
+        <div className="d-flex justify-content-between">
+          <div className="d-flex">
+            <Link
+              to={`/Kanbas/Courses/${courseId}/Home`}
+              className="text-danger mt-2"
+              style={{ textDecoration: "none" }}
+            >
+              <FaBars className="mx-2" />
+              {course ? course.number : "Course Number"}
+            </Link>
+            <div className="mt-2">
+              {pathSegments.map((segment, index) => (
+                <React.Fragment key={index}>
+                  <MdOutlineKeyboardArrowRight />
+                  <span className="mt-2">{segment}</span>
+                </React.Fragment>
+              ))}
             </div>
-            <button className={"mt-2 me-2 btn btn-outline-secondary"}>
-              <FaGlasses /> Student View
-            </button>
           </div>
-        </h4>
-        <hr style={{marginLeft: "10px" }} />
-      </div>
+          <button className={"mt-2 me-2 btn btn-outline-secondary"}>
+            <FaGlasses /> Student View
+          </button>
+        </div>
+      </h4>
+      <hr style={{ marginLeft: "10px" }} />
+    </div>
   );
 }
 
