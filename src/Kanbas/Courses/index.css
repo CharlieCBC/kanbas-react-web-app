@@ -1,22 +1,22 @@
 .course-container {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .course-content {
-  overflow-y: scroll;
+    overflow-y: scroll;
 }
 
 @media (min-width: 768px) {
-  .course-container {
-    flex-direction: row;
-  }
+    .course-container {
+        flex-direction: row;
+    }
 
-  .course-content {
-    position: fixed;
-    left: 320px;
-    top: 50px;
-    bottom: 0;
-    right: 0;
-  }
+    .course-content {
+        position: fixed;
+        left: 320px;
+        top: 50px;
+        bottom: 0;
+        right: 0;
+    }
 }

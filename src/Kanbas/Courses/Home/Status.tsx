@@ -1,13 +1,14 @@
 import React from "react";
-import {FaFileImport, FaRegBell, FaRegCalendarAlt} from "react-icons/fa";
+import { FaFileImport, FaRegBell, FaRegCalendarAlt } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 
 import "./Status.css";
 
 import assignments from "../../Database/assignments.json";
-import {BiImport, BiTargetLock} from "react-icons/bi";
-import {IoBarChart} from "react-icons/io5";
-import {GrAnnounce} from "react-icons/gr";
+import { BiImport, BiTargetLock } from "react-icons/bi";
+import { IoBarChart } from "react-icons/io5";
+import { GrAnnounce } from "react-icons/gr";
+
 function Status() {
   const { courseId } = useParams();
   const filteredAssignments = assignments.filter(
@@ -57,4 +58,5 @@ function Status() {
     </div>
   );
 }
+
 export default Status;

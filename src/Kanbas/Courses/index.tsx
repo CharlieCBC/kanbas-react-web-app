@@ -18,7 +18,7 @@ function Courses() {
 
   return (
     <div>
-      <TopBar/>
+      <TopBar />
       <TopBreadcrumb />
       <div className="course-container">
         <CourseNavigation />
