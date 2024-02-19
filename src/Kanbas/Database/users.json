@@ -60,7 +60,7 @@
     "role": "STUDENT"
   },
   {
-    "_id": "127",
+    "_id": "131",
     "username": "ring_bearer",
     "password": "shire123",
     "firstName": "Frodo",
@@ -70,7 +70,7 @@
     "role": "FACULTY"
   },
   {
-    "_id": "128",
+    "_id": "132",
     "username": "strider",
     "password": "aragorn123",
     "firstName": "Aragorn",
@@ -80,7 +80,7 @@
     "role": "FACULTY"
   },
   {
-    "_id": "129",
+    "_id": "133",
     "username": "elf_archer",
     "password": "legolas123",
     "firstName": "Legolas",
@@ -97,6 +97,36 @@
     "lastName": "Haha",
     "email": "hohohaha@hi.com",
     "dob": "1999-09-09",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "127",
+    "username": "assassin",
+    "password": "assassin123",
+    "firstName": "Du",
+    "lastName": "Dang",
+    "email": "du@du.com",
+    "dob": "1999-09-01",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "128",
+    "username": "cammy",
+    "password": "cammy123",
+    "firstName": "Cammy",
+    "lastName": "Queen",
+    "email": "cammy@cammy.com",
+    "dob": "1999-09-02",
+    "role": "STUDENT"
+  },
+  {
+    "_id": "129",
+    "username": "SonicBoom",
+    "password": "SonicBoom123",
+    "firstName": "Guile",
+    "lastName": "Perfect",
+    "email": "guile@guile.com",
+    "dob": "1999-09-08",
     "role": "STUDENT"
   }
 ]

@@ -8,8 +8,14 @@ import { CiSearch } from "react-icons/ci";
 
 function Grades() {
   const { courseId } = useParams();
-  const as = assignments.filter((assignment) => assignment.course === courseId);
-  const es = enrollments.filter((enrollment) => enrollment.course === courseId);
+  // Filter assignments and enrollments for the current course
+  const courseAssignments = assignments.filter(
+    (assignment) => assignment.course === courseId,
+  );
+  const courseEnrollments = enrollments.filter(
+    (enrollment) => enrollment.course === courseId,
+  );
+
   return (
     <div className="mt-3 me-1">
       <div className="gap-1 d-flex justify-content-end">
@@ -80,29 +86,37 @@ function Grades() {
       </div>
 
       {/* Table begin */}
-      <div className="table-responsive">
+      <div className="table-responsive table-bordered table-striped">
         <table className="table">
           <thead>
-            <th>Student Name</th>
-            {as.map((assignment) => (
-              <th>{assignment.title}</th>
-            ))}
+            <tr>
+              <th>Student Name</th>
+              {courseAssignments.map((assignment) => (
+                <th className="text-center" key={assignment._id}>
+                  {assignment._id + " - " + assignment.title}
+                </th>
+              ))}
+            </tr>
           </thead>
           <tbody>
-            {es.map((enrollment) => {
+            {courseEnrollments.map((enrollment) => {
               const user = users.find((user) => user._id === enrollment.user);
               return (
-                <tr>
+                <tr key={enrollment._id}>
                   <td>
                     {user?.firstName} {user?.lastName}
                   </td>
-                  {assignments.map((assignment) => {
+                  {courseAssignments.map((assignment) => {
                     const grade = grades.find(
                       (grade) =>
                         grade.student === enrollment.user &&
                         grade.assignment === assignment._id,
                     );
-                    return <td>{grade?.grade || ""}</td>;
+                    return (
+                      <td className="text-center" key={assignment._id}>
+                        {grade?.grade || "-"}
+                      </td>
+                    );
                   })}
                 </tr>
               );
