@@ -2,12 +2,12 @@ import React from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { FaBars, FaGlasses } from "react-icons/fa";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { courses } from "../../Database";
+import db from "../../Database";
 
 function TopBreadcrumb() {
   const { courseId } = useParams();
   const { pathname } = useLocation();
-  const course = courses.find((course) => course._id === courseId);
+  const course = db.courses.find((course) => course._id === courseId);
 
   // Ensure courseId is treated as a string, using an empty string as fallback
   const safeCourseId = courseId || "";

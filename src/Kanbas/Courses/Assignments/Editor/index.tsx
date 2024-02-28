@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { assignments } from "../../../Database";
+import db from "../../../Database";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaCheckCircle } from "react-icons/fa";
 
 function AssignmentEditor() {
   const { assignmentId } = useParams();
-  const assignment = assignments.find(
+  const assignment = db.assignments.find(
     (assignment) => assignment._id === assignmentId,
   );
   const { courseId } = useParams();

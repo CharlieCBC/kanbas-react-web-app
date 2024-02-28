@@ -1,4 +1,4 @@
-import { assignments, enrollments, grades, users } from "../../Database";
+import db from "../../Database";
 import { useParams } from "react-router-dom";
 import { FaChevronDown, FaFileExport, FaFileImport } from "react-icons/fa";
 import React from "react";
@@ -9,10 +9,10 @@ import { CiSearch } from "react-icons/ci";
 function Grades() {
   const { courseId } = useParams();
   // Filter assignments and enrollments for the current course
-  const courseAssignments = assignments.filter(
+  const courseAssignments = db.assignments.filter(
     (assignment) => assignment.course === courseId,
   );
-  const courseEnrollments = enrollments.filter(
+  const courseEnrollments = db.enrollments.filter(
     (enrollment) => enrollment.course === courseId,
   );
 
@@ -100,14 +100,14 @@ function Grades() {
           </thead>
           <tbody>
             {courseEnrollments.map((enrollment) => {
-              const user = users.find((user) => user._id === enrollment.user);
+              const user = db.users.find((user) => user._id === enrollment.user);
               return (
                 <tr key={enrollment._id}>
                   <td>
                     {user?.firstName} {user?.lastName}
                   </td>
                   {courseAssignments.map((assignment) => {
-                    const grade = grades.find(
+                    const grade = db.grades.find(
                       (grade) =>
                         grade.student === enrollment.user &&
                         grade.assignment === assignment._id,

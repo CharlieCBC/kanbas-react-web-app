@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { FaBars, FaGlasses } from "react-icons/fa";
-import { courses } from "../../Database";
+import db from "../../Database";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TopLeftModal from "./TopLeftModal";
 import TopRightDropdown from "./TopRightDropdown";
@@ -9,7 +9,7 @@ import TopRightDropdown from "./TopRightDropdown";
 const TopBar: React.FC = () => {
   const { courseId } = useParams<{ courseId: string }>();
   const { pathname } = useLocation();
-  const course = courses.find((course) => course._id === courseId);
+  const course = db.courses.find((course) => course._id === courseId);
   // State to control the visibility of the modal
   const [showModal, setShowModal] = useState(false);
   const inCoursePath = pathname.includes("Kanbas/Courses");

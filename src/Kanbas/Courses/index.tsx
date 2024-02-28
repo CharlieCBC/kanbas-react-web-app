@@ -7,14 +7,14 @@ import TopBreadcrumb from "./TopBarComponents/TopBreadcrumb";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
-import { courses } from "../../Kanbas/Database";
+import db from "../../Kanbas/Database";
 import "./index.css";
 import { Navigate, Route, Routes } from "react-router";
 import TopBar from "./TopBarComponents/TopBar";
 
 function Courses() {
   const { courseId } = useParams();
-  const course = courses.find((course) => course._id === courseId);
+  const course = db.courses.find((course) => course._id === courseId);
 
   return (
     <div>
