@@ -7,19 +7,18 @@ import TopBreadcrumb from "./TopBarComponents/TopBreadcrumb";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
-import db from "../../Kanbas/Database";
 import "./index.css";
 import { Navigate, Route, Routes } from "react-router";
 import TopBar from "./TopBarComponents/TopBar";
 
-function Courses() {
+function Courses({ courses }) {
   const { courseId } = useParams();
-  const course = db.courses.find((course) => course._id === courseId);
+  const course = courses.find((course) => course._id === courseId);
 
   return (
     <div>
       <TopBar />
-      <TopBreadcrumb />
+      <TopBreadcrumb courses={courses}/>
       <div className="course-container">
         <CourseNavigation />
         <div className="course-content">

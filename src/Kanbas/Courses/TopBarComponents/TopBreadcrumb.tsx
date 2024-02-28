@@ -4,10 +4,10 @@ import { FaBars, FaGlasses } from "react-icons/fa";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import db from "../../Database";
 
-function TopBreadcrumb() {
+function TopBreadcrumb({courses}) {
   const { courseId } = useParams();
   const { pathname } = useLocation();
-  const course = db.courses.find((course) => course._id === courseId);
+  const course = courses.find((course) => course._id === courseId);
 
   // Ensure courseId is treated as a string, using an empty string as fallback
   const safeCourseId = courseId || "";
