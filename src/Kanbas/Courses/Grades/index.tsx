@@ -24,7 +24,7 @@ function Grades() {
         </button>
         <div className="dropdown">
           <button
-            className="btn btn-secondary btn-sm dropdown-toggle"
+            className="btn btn-secondary btn-sm"
             type="button"
             data-bs-toggle="dropdown"
           >
