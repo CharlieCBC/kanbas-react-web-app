@@ -18,24 +18,26 @@ function Dashboard({
         <h1>Dashboard</h1>
         <h5>Course</h5>
         <input
+          placeholder="Course Name"
           value={course.name}
-          className="form-control"
+          className="form-control mb-1"
           onChange={(e) => setCourse({ ...course, name: e.target.value })}
         />
         <input
+          placeholder="Course Number"
           value={course.number}
-          className="form-control"
+          className="form-control mb-1"
           onChange={(e) => setCourse({ ...course, number: e.target.value })}
         />
         <input
           value={course.startDate}
-          className="form-control"
+          className="form-control mb-1"
           type="date"
           onChange={(e) => setCourse({ ...course, startDate: e.target.value })}
         />
         <input
           value={course.endDate}
-          className="form-control"
+          className="form-control mb-1"
           type="date"
           onChange={(e) => setCourse({ ...course, endDate: e.target.value })}
         />

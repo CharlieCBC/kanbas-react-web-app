@@ -11,10 +11,10 @@ function Kanbas() {
   const [courses, setCourses] = useState(db.courses);
   const [course, setCourse] = useState({
     _id: "", // id placeholder
-    name: "New Course",
-    number: "New Number",
-    startDate: "2023-09-10",
-    endDate: "2023-12-15",
+    name: "",
+    number: "",
+    startDate: "2024-01-10",
+    endDate: "2024-04-30",
     image: "husky.jpg", // default image
   });
   const addNewCourse = () => {
