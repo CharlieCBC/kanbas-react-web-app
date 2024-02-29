@@ -100,7 +100,9 @@ function Grades() {
           </thead>
           <tbody>
             {courseEnrollments.map((enrollment) => {
-              const user = db.users.find((user) => user._id === enrollment.user);
+              const user = db.users.find(
+                (user) => user._id === enrollment.user,
+              );
               return (
                 <tr key={enrollment._id}>
                   <td>

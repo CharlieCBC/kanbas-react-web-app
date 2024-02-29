@@ -3,10 +3,12 @@ import helloReducer from "../a4/ReduxExamples/HelloRedux/helloReducer";
 import counterReducer from "../a4/ReduxExamples/CounterRedux/counterReducer";
 import addReducer from "../a4/ReduxExamples/AddRedux/addReducer";
 import todosReducer from "../a4/ReduxExamples/todos/todosReducer";
+
 export type TodoType = {
   id: string;
   title: string;
 };
+
 export interface LabState {
   helloReducer: {
     message: string;
@@ -22,6 +24,7 @@ export interface LabState {
     todo: TodoType;
   };
 }
+
 const store = configureStore({
   reducer: {
     helloReducer,

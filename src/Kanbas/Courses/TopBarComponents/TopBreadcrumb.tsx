@@ -4,7 +4,7 @@ import { FaBars, FaGlasses } from "react-icons/fa";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import db from "../../Database";
 
-function TopBreadcrumb({courses}) {
+function TopBreadcrumb({ courses }) {
   const { courseId } = useParams();
   const { pathname } = useLocation();
   const course = courses.find((course) => course._id === courseId);

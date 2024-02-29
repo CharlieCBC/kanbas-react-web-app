@@ -4,7 +4,7 @@ function ForLoops() {
   for (let i = 0; i < stringArray1.length; i++) {
     const string1 = stringArray1[i];
     // @ts-ignore
-      stringArray2.push(string1.toUpperCase());
+    stringArray2.push(string1.toUpperCase());
   }
 
   return (
