@@ -5,15 +5,15 @@ import {
   FaPlus,
   FaPlusCircle,
 } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { AssignmentsState } from "../../store";
 import {
-  addAssignment,
+  // addAssignment,
   deleteAssignment,
-  updateAssignment,
-  setAssignment,
+  // updateAssignment,
+  // setAssignment,
 } from "./assignmentsReducer";
 import { Button, Modal } from "react-bootstrap";
 
@@ -23,18 +23,24 @@ function Assignments() {
   const assignments = useSelector(
     (state: AssignmentsState) => state.assignmentsReducer.assignments,
   );
-  const assignment = useSelector(
-    (state: AssignmentsState) => state.assignmentsReducer.assignment,
-  );
+  // const assignment = useSelector(
+  //   (state: AssignmentsState) => state.assignmentsReducer.assignment,
+  // );
   const dispatch = useDispatch();
 
-  const courseAssignments = assignments.filter(
-    (assignment) => assignment.course === courseId,
-  );
+  // const courseAssignments = assignments.filter(
+  //   (assignment) => assignment.course === courseId,
+  // );
 
   // State to control the visibility of the dialog and store the selected assignment ID
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [selectedAssignmentId, setSelectedAssignmentId] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleClickAddAssignment = () => {
+    navigate(`/Kanbas/Courses/${courseId}/Assignments/Editor`);
+  };
 
   // Handlers for showing and hiding the dialog
   const handleShowDeleteDialog = (assignmentId) => {
@@ -66,6 +72,7 @@ function Assignments() {
           <button
             className="btn me-2"
             style={{ color: "white", backgroundColor: "red" }}
+            onClick={handleClickAddAssignment}
           >
             <FaPlus /> Assignment
           </button>
@@ -118,7 +125,7 @@ function Assignments() {
                     <FaCheckCircle className="text-success" />
                     <FaEllipsisV className="ms-2" />
                     <button
-                      className="btn btn-sm btn-danger"
+                      className="btn btn-danger delete-assignment-btn"
                       onClick={() => handleShowDeleteDialog(assignment._id)}
                     >
                       Delete

@@ -4,6 +4,7 @@ import db from "../../Database";
 const initialState = {
   assignments: db.assignments,
   assignment: {
+    _id: "",
     title: "New Title",
     description: "New Description",
     dueDate: "2024-03-10",
