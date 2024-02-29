@@ -6,12 +6,22 @@ import {
   FaPlusCircle,
 } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
-import db from "../../Database";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { AssignmentsState } from "../../store";
 
 function Assignments() {
   const { courseId } = useParams();
-  const assignmentList = db.assignments.filter(
+
+  const assignments = useSelector(
+    (state: AssignmentsState) => state.assignmentsReducer.assignments,
+  );
+  const assignment = useSelector(
+    (state: AssignmentsState) => state.assignmentsReducer.assignment,
+  );
+  const dispatch = useDispatch();
+
+  const courseAssignments = assignments.filter(
     (assignment) => assignment.course === courseId,
   );
   return (
@@ -49,20 +59,22 @@ function Assignments() {
             </span>
           </div>
           <ul className="list-group">
-            {assignmentList.map((assignment) => (
-              <li className="list-group-item">
-                <FaEllipsisV className="me-2" />
-                <Link
-                  to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
-                >
-                  {assignment.title}
-                </Link>
-                <span className="float-end">
-                  <FaCheckCircle className="text-success" />
-                  <FaEllipsisV className="ms-2" />
-                </span>
-              </li>
-            ))}
+            {assignments
+              .filter((assignment) => assignment.course === courseId)
+              .map((assignment, index) => (
+                <li className="list-group-item">
+                  <FaEllipsisV className="me-2" />
+                  <Link
+                    to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
+                  >
+                    {assignment.title}
+                  </Link>
+                  <span className="float-end">
+                    <FaCheckCircle className="text-success" />
+                    <FaEllipsisV className="ms-2" />
+                  </span>
+                </li>
+              ))}
           </ul>
         </li>
       </ul>

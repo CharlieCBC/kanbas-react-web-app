@@ -7,6 +7,13 @@ export interface KanbasState {
     module: any;
   };
 }
+export interface AssignmentsState {
+  assignmentsReducer: {
+    assignments: any[];
+    assignment: any;
+  };
+}
+
 const store = configureStore({
   reducer: {
     modulesReducer,
