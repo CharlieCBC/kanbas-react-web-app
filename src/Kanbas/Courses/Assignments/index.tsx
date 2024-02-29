@@ -125,7 +125,7 @@ function Assignments() {
                     <FaCheckCircle className="text-success" />
                     <FaEllipsisV className="ms-2" />
                     <button
-                      className="btn btn-danger delete-assignment-btn"
+                      className="btn btn-danger btn-delete-assignment"
                       onClick={() => handleShowDeleteDialog(assignment._id)}
                     >
                       Delete

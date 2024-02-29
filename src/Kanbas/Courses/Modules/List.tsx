@@ -37,26 +37,39 @@ function ModuleList() {
           {/*<button>*/}
           {/*  <BsThreeDotsVertical />*/}
           {/*</button>*/}
-          {/*Todo: change group style*/}
-          <button
-            onClick={() => dispatch(addModule({ ...module, course: courseId }))}
-          >
-            Add
-          </button>
-          <button onClick={() => dispatch(updateModule(module))}>Update</button>
+          <div className="d-flex">
+            <textarea
+              placeholder="Module Name"
+              value={module.name}
+              onChange={(e) =>
+                dispatch(setModule({ ...module, name: e.target.value }))
+              }
+            />
+            <textarea
+              placeholder="Module Description"
+              value={module.description}
+              onChange={(e) =>
+                dispatch(setModule({ ...module, description: e.target.value }))
+              }
+            />
+          </div>
 
-          <input
-            value={module.name}
-            onChange={(e) =>
-              dispatch(setModule({ ...module, name: e.target.value }))
-            }
-          />
-          <textarea
-            value={module.description}
-            onChange={(e) =>
-              dispatch(setModule({ ...module, description: e.target.value }))
-            }
-          />
+          <div className="mt-1 d-flex justify-content-end">
+            <button
+              className="me-2 btn btn-sm btn-primary"
+              onClick={() => dispatch(updateModule(module))}
+            >
+              Update
+            </button>
+            <button
+              className="btn btn-sm btn-success"
+              onClick={() =>
+                dispatch(addModule({ ...module, course: courseId }))
+              }
+            >
+              Add
+            </button>
+          </div>
         </div>
       </div>
       <ul className="list-group wd-modules">
@@ -74,15 +87,17 @@ function ModuleList() {
                   <FaCheckCircle className="text-success" />
                   <FaPlusCircle className="ms-2" />
                   <FaEllipsisV className="ms-2" />
-                  {/*Todo: change deleted button style*/}
                   <button
-                    className="me-2"
+                    className="me-2 btn btn-edit"
                     onClick={() => dispatch(setModule(module))}
                   >
                     Edit
                   </button>
 
-                  <button onClick={() => dispatch(deleteModule(module._id))}>
+                  <button
+                    className="btn btn-delete-assignment"
+                    onClick={() => dispatch(deleteModule(module._id))}
+                  >
                     Delete
                   </button>
                 </span>

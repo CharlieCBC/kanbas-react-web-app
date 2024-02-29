@@ -22,9 +22,9 @@ function AssignmentEditor() {
     setAssignmentState(matchedAssignment);
   }, [assignmentId, assignments, courseId]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
-    setAssignmentState((prev) => ({ ...prev, [name]: value }));
+    setAssignmentState((prev: any) => ({ ...prev, [name]: value }));
   };
 
   const handleSave = () => {
