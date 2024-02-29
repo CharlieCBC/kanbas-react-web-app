@@ -117,9 +117,16 @@ function Assignments() {
                 <li className="list-group-item">
                   <FaEllipsisV className="me-2" />
                   <Link
+                    className="wd-links"
                     to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
                   >
-                    {assignment.title}
+                    {assignment.title +
+                      " | " +
+                      assignment.description +
+                      " | Due Date: " +
+                      assignment.dueDate +
+                      " Points: " +
+                      assignment.points}
                   </Link>
                   <span className="float-end">
                     <FaCheckCircle className="text-success" />
