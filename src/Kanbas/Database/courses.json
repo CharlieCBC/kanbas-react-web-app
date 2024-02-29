@@ -22,5 +22,13 @@
     "startDate": "2023-01-10",
     "endDate": "2023-05-15",
     "image": "spaceship-design.jpg"
+  },
+  {
+    "_id": "CS001",
+    "name": "Empty Course",
+    "number": "CS0001",
+    "startDate": "2023-01-10",
+    "endDate": "2023-05-15",
+    "image": "husky.jpg"
   }
 ]

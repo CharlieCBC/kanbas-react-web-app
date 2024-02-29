@@ -56,11 +56,15 @@ function Dashboard({
             {courses.map((course) => (
               <div key={course._id} className="col" style={{ width: 300 }}>
                 <div className="card">
-                  <img
-                    src={`/images/${course.image}`}
-                    className="card-img-top"
-                    style={{ height: 150 }}
-                  />
+                  <Link to={`/Kanbas/Courses/${course._id}/Home`}>
+                    <img
+                      src={`/images/${course.image}`}
+                      className="card-img-top"
+                      style={{ height: 150 }}
+                      alt="husky.jpg"
+                    />
+                  </Link>
+
                   <div className="card-body">
                     <Link
                       className="card-title"
@@ -73,7 +77,14 @@ function Dashboard({
                     >
                       {course.name}{" "}
                     </Link>
-                    <p className="card-text">{course.name}</p>
+                    <p>
+                      <Link
+                        className="wd-links"
+                        to={`/Kanbas/Courses/${course._id}/Home`}
+                      >
+                        {course.number}
+                      </Link>
+                    </p>
                     <Link
                       to={`/Kanbas/Courses/${course._id}/Home`}
                       className="btn btn-primary me-2"
