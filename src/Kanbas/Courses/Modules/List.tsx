@@ -82,7 +82,7 @@ function ModuleList() {
             >
               <div>
                 <FaEllipsisV className="me-2" />
-                {module.name}
+                {module.name + " - " + module.description}
                 <span className="float-end">
                   <FaCheckCircle className="text-success" />
                   <FaPlusCircle className="ms-2" />
@@ -107,7 +107,7 @@ function ModuleList() {
                   {module.lessons?.map((lesson) => (
                     <li className="list-group-item">
                       <FaEllipsisV className="me-2" />
-                      {lesson.name}
+                      {lesson.name + " - " + lesson.description}
                       <span className="float-end">
                         <FaCheckCircle className="text-success" />
                         <FaEllipsisV className="ms-2" />
