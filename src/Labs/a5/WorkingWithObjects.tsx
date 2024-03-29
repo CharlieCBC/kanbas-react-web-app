@@ -121,7 +121,8 @@ function WorkingWithObjects() {
       >
         Update Module Description
       </a>
-      <textarea className="align-top"
+      <textarea
+        className="align-top"
         onChange={(e) =>
           setModule({
             ...module,
