@@ -28,9 +28,7 @@ function Kanbas() {
   });
 
   const addNewCourse = async () => {
-    console.log("Sending course data to backend:", course);
     const response = await axios.post(COURSES_API, course);
-    console.log(response.data);
     setCourses([...courses, response.data]);
   };
 
@@ -74,10 +72,7 @@ function Kanbas() {
                 />
               }
             />
-            <Route
-              path="Courses/:courseId/*"
-              element={<Courses courses={courses} />}
-            />
+            <Route path="Courses/:courseId/*" element={<Courses />} />
           </Routes>
         </div>
       </div>
