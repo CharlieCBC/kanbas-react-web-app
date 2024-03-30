@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaCheckCircle } from "react-icons/fa";
 import { addAssignment, updateAssignment } from "../assignmentsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { AssignmentsState } from "../../../store";
+import * as client from "../client";
 
 function AssignmentEditor() {
   const { assignments, assignment: initialAssignment } = useSelector(
@@ -22,26 +23,22 @@ function AssignmentEditor() {
     setAssignmentState(matchedAssignment);
   }, [assignmentId, assignments, courseId]);
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setAssignmentState((prev: any) => ({ ...prev, [name]: value }));
-  };
+    setAssignmentState((prev) => ({ ...prev, [name]: value }));
+  }, []);
 
   const handleSave = () => {
     if (assignment._id) {
       // Existing assignment
-      dispatch(
-        updateAssignment({
-          ...assignment,
-        }),
-      );
+      client.updateAssignment(assignment).then((assignment) => {
+        dispatch(updateAssignment(assignment));
+      });
     } else {
       // New assignment, assign a unique _id
-      const newAssignment = {
-        ...assignment,
-        _id: new Date().getTime().toString(),
-      };
-      dispatch(addAssignment(newAssignment));
+      client.createAssignment(courseId, assignment).then((assignment) => {
+        dispatch(addAssignment(assignment));
+      });
     }
     navigate(`/Kanbas/Courses/${courseId}/Assignments`);
   };

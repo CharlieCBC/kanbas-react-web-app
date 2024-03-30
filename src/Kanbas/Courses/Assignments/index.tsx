@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaCheckCircle,
   FaEllipsisV,
@@ -9,24 +9,31 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { AssignmentsState } from "../../store";
+import * as client from "./client";
 import {
   // addAssignment,
   deleteAssignment,
   // updateAssignment,
-  // setAssignment,
+  setAssignments,
 } from "./assignmentsReducer";
 import { Button, Modal } from "react-bootstrap";
 
 function Assignments() {
   const { courseId } = useParams();
+  const dispatch = useDispatch();
 
   const assignments = useSelector(
     (state: AssignmentsState) => state.assignmentsReducer.assignments,
   );
-  // const assignment = useSelector(
-  //   (state: AssignmentsState) => state.assignmentsReducer.assignment,
-  // );
-  const dispatch = useDispatch();
+  const assignment = useSelector(
+    (state: AssignmentsState) => state.assignmentsReducer.assignment,
+  );
+
+  useEffect(() => {
+    client.findAssignmentsForCourse(courseId).then((assignments) => {
+      dispatch(setAssignments(assignments));
+    });
+  }, [courseId, dispatch]);
 
   // const courseAssignments = assignments.filter(
   //   (assignment) => assignment.course === courseId,
@@ -34,7 +41,7 @@ function Assignments() {
 
   // State to control the visibility of the dialog and store the selected assignment ID
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-  const [selectedAssignmentId, setSelectedAssignmentId] = useState(null);
+  const [selectedAssignmentId, setSelectedAssignmentId] = useState("");
 
   const navigate = useNavigate();
 
@@ -43,7 +50,7 @@ function Assignments() {
   };
 
   // Handlers for showing and hiding the dialog
-  const handleShowDeleteDialog = (assignmentId) => {
+  const handleShowDeleteDialog = (assignmentId: string) => {
     setSelectedAssignmentId(assignmentId);
     setShowDeleteDialog(true);
   };
@@ -52,11 +59,13 @@ function Assignments() {
     setShowDeleteDialog(false);
   };
 
-  // Handler for confirming deletion
-  const handleDeleteAssignment = () => {
-    dispatch(deleteAssignment(selectedAssignmentId));
+  const handleDeleteAssignment = (assignmentId: string) => {
+    client.deleteAssignment(assignmentId).then((status) => {
+      dispatch(deleteAssignment(assignmentId));
+    });
     setShowDeleteDialog(false);
   };
+
   return (
     <>
       <div className="mt-3 me-1">
@@ -104,7 +113,10 @@ function Assignments() {
               <Button variant="secondary" onClick={handleCloseDeleteDialog}>
                 No
               </Button>
-              <Button variant="danger" onClick={handleDeleteAssignment}>
+              <Button
+                variant="danger"
+                onClick={() => handleDeleteAssignment(selectedAssignmentId)}
+              >
                 Yes
               </Button>
             </Modal.Footer>
@@ -113,8 +125,8 @@ function Assignments() {
           <ul className="list-group">
             {assignments
               .filter((assignment) => assignment.course === courseId)
-              .map((assignment, index) => (
-                <li className="list-group-item">
+              .map((assignment) => (
+                <li key={assignment._id} className="list-group-item">
                   <FaEllipsisV className="me-2" />
                   <Link
                     className="wd-links"
