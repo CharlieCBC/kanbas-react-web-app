@@ -18,15 +18,12 @@ function Courses() {
   const COURSES_API = "http://localhost:4000/api/courses";
   const [course, setCourse] = useState<any>({ _id: "" });
   const findCourseById = async (courseId?: string) => {
-    const response = await axios.get(
-        `${COURSES_API}/${courseId}`
-    );
+    const response = await axios.get(`${COURSES_API}/${courseId}`);
     setCourse(response.data);
   };
   useEffect(() => {
     findCourseById(courseId);
   }, [courseId]);
-
 
   return (
     <div>

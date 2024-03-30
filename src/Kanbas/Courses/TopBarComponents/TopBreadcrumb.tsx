@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { FaBars, FaGlasses } from "react-icons/fa";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
@@ -12,9 +12,7 @@ function TopBreadcrumb() {
   const COURSES_API = "http://localhost:4000/api/courses";
   const [course, setCourse] = useState<any>({ _id: "" });
   const findCourseById = async (courseId?: string) => {
-    const response = await axios.get(
-        `${COURSES_API}/${courseId}`
-    );
+    const response = await axios.get(`${COURSES_API}/${courseId}`);
     setCourse(response.data);
   };
   useEffect(() => {
