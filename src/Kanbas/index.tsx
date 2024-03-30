@@ -2,13 +2,22 @@ import KanbasNavigation from "./Navigation";
 import Dashboard from "./Dashboard";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Courses from "./Courses";
-import db from "./Database";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import store from "./store";
 import { Provider } from "react-redux";
 
 function Kanbas() {
-  const [courses, setCourses] = useState(db.courses);
+  const [courses, setCourses] = useState<any[]>([]);
+  const COURSES_API = "http://localhost:4000/api/courses";
+  const findAllCourses = async () => {
+    const response = await axios.get(COURSES_API);
+    setCourses(response.data);
+  };
+  useEffect(() => {
+    findAllCourses();
+  }, []);
+
   const [course, setCourse] = useState({
     _id: "", // id placeholder
     name: "",
@@ -17,28 +26,27 @@ function Kanbas() {
     endDate: "2024-04-30",
     image: "husky.jpg", // default image
   });
-  const addNewCourse = () => {
-    setCourses([
-      ...courses,
-      { ...course, _id: new Date().getTime().toString() },
-    ]);
+
+  const addNewCourse = async () => {
+    console.log("Sending course data to backend:", course);
+    const response = await axios.post(COURSES_API, course);
+    console.log(response.data);
+    setCourses([...courses, response.data]);
   };
-  const deleteCourse = (courseId) => {
-    setCourses(courses.filter((course) => course._id !== courseId));
+
+  const deleteCourse = async (courseId: string) => {
+    const response = await axios.delete(`${COURSES_API}/${courseId}`);
+    setCourses(courses.filter((c) => c._id !== courseId));
   };
-  const updateCourse = () => {
-    if (!course._id) {
-      // Optionally handle the case where _id is not set, e.g., warning log or early return
-      console.warn("Attempted to update a course without an _id.");
-      return;
-    }
+
+  const updateCourse = async () => {
+    const response = await axios.put(`${COURSES_API}/${course._id}`, course);
     setCourses(
       courses.map((c) => {
         if (c._id === course._id) {
-          return { ...course, image: course.image || "husky.jpg" };
-        } else {
-          return c;
+          return course;
         }
+        return c;
       }),
     );
   };
