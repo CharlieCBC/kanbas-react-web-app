@@ -53,7 +53,7 @@ function Dashboard({
         <hr />
         <div className="row">
           <div className="row row-cols-1 row-cols-md-5 g-4">
-            {courses.map((course: any) => (
+            {courses.map((course) => (
               <div key={course._id} className="col" style={{ width: 300 }}>
                 <div className="card">
                   <Link to={`/Kanbas/Courses/${course._id}/Home`}>
