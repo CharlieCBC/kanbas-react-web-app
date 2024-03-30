@@ -129,7 +129,7 @@ function ModuleList() {
               {selectedModule && selectedModule?._id === module._id && (
                 <ul className="list-group">
                   {module.lessons?.map((lesson) => (
-                    <li className="list-group-item">
+                    <li key = {lesson._id} className="list-group-item">
                       <FaEllipsisV className="me-2" />
                       {lesson.name + " - " + lesson.description}
                       <span className="float-end">
