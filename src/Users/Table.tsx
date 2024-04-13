@@ -17,6 +17,14 @@ export default function UserTable() {
     lastName: "",
     role: "USER",
   });
+  const [role, setRole] = useState("USER");
+
+  const fetchUsersByRole = async (role: string) => {
+    const users = await client.findUsersByRole(role);
+    setRole(role);
+    setUsers(users);
+  };
+
   const createUser = async () => {
     try {
       const newUser = await client.createUser(user);
@@ -64,6 +72,16 @@ export default function UserTable() {
 
   return (
     <div>
+      <select
+        onChange={(e) => fetchUsersByRole(e.target.value)}
+        value={role || "USER"}
+        className="mt-2 form-control w-25 float-end"
+      >
+        <option value="USER">User</option>
+        <option value="ADMIN">Admin</option>
+        <option value="FACULTY">Faculty</option>
+        <option value="STUDENT">Student</option>
+      </select>
       <h1>User Table</h1>
       <table className="table">
         <thead>
