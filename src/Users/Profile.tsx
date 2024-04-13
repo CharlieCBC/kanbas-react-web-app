@@ -1,6 +1,6 @@
 import * as client from "./client";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function Profile() {
   const [profile, setProfile] = useState({
     username: "",
@@ -26,7 +26,11 @@ export default function Profile() {
   return (
     <div>
       <h1>Profile</h1>
-
+      <button onClick={save}>Save</button>
+      <br/>
+      <Link to="/Kanbas/Account/Admin/Users" className="btn btn-warning w-100">
+        Users
+      </Link>
       {profile && (
         <div>
           <input
@@ -72,7 +76,6 @@ export default function Profile() {
           </select>
         </div>
       )}
-      <button onClick={save}>Save</button>
     </div>
   );
 }
