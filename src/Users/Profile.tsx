@@ -26,10 +26,12 @@ export default function Profile() {
   return (
     <div>
       <h1>Profile</h1>
-      <button onClick={save}>Save</button>
-      <br/>
-      <Link to="/Kanbas/Account/Admin/Users" className="btn btn-warning w-100">
-        Users
+      <button className="btn btn-success" onClick={save}>
+        Save
+      </button>
+      <br />
+      <Link to="/Kanbas/Account/Admin/Users" className="btn btn-warning">
+        All Users
       </Link>
       {profile && (
         <div>
@@ -47,11 +49,13 @@ export default function Profile() {
           />
           <input
             value={profile.firstName}
+            placeholder="first name"
             onChange={(e) =>
               setProfile({ ...profile, firstName: e.target.value })
             }
           />
           <input
+            placeholder="last name"
             value={profile.lastName}
             onChange={(e) =>
               setProfile({ ...profile, lastName: e.target.value })
@@ -63,6 +67,7 @@ export default function Profile() {
             onChange={(e) => setProfile({ ...profile, dob: e.target.value })}
           />
           <input
+            placeholder="email"
             value={profile.email}
             onChange={(e) => setProfile({ ...profile, email: e.target.value })}
           />
