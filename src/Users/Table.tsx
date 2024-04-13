@@ -21,13 +21,24 @@ export default function UserTable() {
     }
   };
 
+  const deleteUser = async (user: User) => {
+    try {
+      await client.deleteUser(user);
+      setUsers(users.filter((u) => u._id !== user._id));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const fetchUsers = async () => {
     const users = await client.findAllUsers();
     setUsers(users);
   };
+
   useEffect(() => {
     fetchUsers();
   }, []);
+
   return (
     <div>
       <h1>User Table</h1>
@@ -84,6 +95,7 @@ export default function UserTable() {
             <td>
               <BsPlusCircleFill onClick={createUser} />
             </td>
+            <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
@@ -93,6 +105,11 @@ export default function UserTable() {
               <td>{user.firstName}</td>
               <td>{user.lastName}</td>
               <td>{user.role}</td>
+              <td>
+                <button onClick={() => deleteUser(user)}>
+                  <BsTrash3Fill />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
