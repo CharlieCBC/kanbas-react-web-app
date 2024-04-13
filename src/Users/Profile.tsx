@@ -16,12 +16,17 @@ export default function Profile() {
     const account = await client.profile();
     setProfile(account);
   };
+  const save = async () => {
+    await client.updateUser(profile);
+  };
+
   useEffect(() => {
     fetchProfile();
   }, []);
   return (
     <div>
       <h1>Profile</h1>
+
       {profile && (
         <div>
           <input
@@ -67,6 +72,7 @@ export default function Profile() {
           </select>
         </div>
       )}
+      <button onClick={save}>Save</button>
     </div>
   );
 }
