@@ -39,3 +39,8 @@ export const deleteUser = async (user: any) => {
       `${USERS_API}/${user._id}`);
   return response.data;
 };
+
+export const findUserById = async (id: string) => {
+  const response = await axios.get(`${USERS_API}/${id}`);
+  return response.data;
+};

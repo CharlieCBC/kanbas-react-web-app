@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BsTrash3Fill, BsPlusCircleFill } from "react-icons/bs";
+import {
+  BsFillCheckCircleFill,
+  BsPencil,
+  BsTrash3Fill,
+  BsPlusCircleFill,
+} from "react-icons/bs";
 import * as client from "./client";
 import { User } from "./client";
 export default function UserTable() {
@@ -25,6 +30,24 @@ export default function UserTable() {
     try {
       await client.deleteUser(user);
       setUsers(users.filter((u) => u._id !== user._id));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const selectUser = async (user: User) => {
+    try {
+      const u = await client.findUserById(user._id);
+      setUser(u);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateUser = async () => {
+    try {
+      const status = await client.updateUser(user);
+      setUsers(users.map((u) => (u._id === user._id ? user : u)));
     } catch (err) {
       console.log(err);
     }
@@ -92,8 +115,15 @@ export default function UserTable() {
                 <option value="STUDENT">Student</option>
               </select>
             </td>
-            <td>
-              <BsPlusCircleFill onClick={createUser} />
+            <td className="text-nowrap">
+              <BsFillCheckCircleFill
+                onClick={updateUser}
+                className="me-2 text-success fs-1 text"
+              />
+              <BsPlusCircleFill
+                onClick={createUser}
+                className="text-success fs-1 text"
+              />
             </td>
             <th>&nbsp;</th>
           </tr>
@@ -105,9 +135,15 @@ export default function UserTable() {
               <td>{user.firstName}</td>
               <td>{user.lastName}</td>
               <td>{user.role}</td>
-              <td>
-                <button onClick={() => deleteUser(user)}>
+              <td className="text-nowrap">
+                <button
+                  className="btn btn-danger me-2"
+                  onClick={() => deleteUser(user)}
+                >
                   <BsTrash3Fill />
+                </button>
+                <button className="btn btn-warning me-2">
+                  <BsPencil onClick={() => selectUser(user)} />
                 </button>
               </td>
             </tr>
