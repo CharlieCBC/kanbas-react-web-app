@@ -41,6 +41,7 @@ export default function Profile() {
         <div>
           <input
             value={profile.username}
+            placeholder="username"
             className="mb-1"
             onChange={(e) =>
               setProfile({ ...profile, username: e.target.value })
@@ -49,6 +50,7 @@ export default function Profile() {
           <br />
           <input
             value={profile.password}
+            placeholder="password"
             className="mb-1"
             onChange={(e) =>
               setProfile({ ...profile, password: e.target.value })

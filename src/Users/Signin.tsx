@@ -13,8 +13,12 @@ export default function Signin() {
   });
   const navigate = useNavigate();
   const signin = async () => {
-    await client.signin(credentials);
-    navigate("/Kanbas/Account/Profile");
+    try {
+      await client.signin(credentials);
+      navigate("/Kanbas/Account/Profile");
+    } catch (err: any) {
+      alert(err.response.data.message);
+    }
   };
 
   return (
