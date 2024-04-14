@@ -21,13 +21,13 @@ function Dashboard({
           placeholder="Course Name"
           value={course.name}
           className="form-control mb-1"
-          onChange={(e) => setCourse({ ...course, name: e.target.value || "New Course"})}
+          onChange={(e) => setCourse({ ...course, name: e.target.value })}
         />
         <input
           placeholder="Course Number"
           value={course.number}
           className="form-control mb-1"
-          onChange={(e) => setCourse({ ...course, number: e.target.value || "NC0001"})}
+          onChange={(e) => setCourse({ ...course, number: e.target.value })}
         />
         <input
           value={course.startDate || ""}
