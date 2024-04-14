@@ -4,48 +4,64 @@ import { FaEllipsisV, FaCheckCircle, FaPlusCircle } from "react-icons/fa";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import * as client from "./client";
-import {
-  addModule,
-  deleteModule,
-  updateModule,
-  setModule,
-  setModules,
-} from "./modulesReducer";
-import { KanbasState } from "../../store";
+import { Module } from "./client";
 
 function ModuleList() {
   const dispatch = useDispatch();
   const { courseId } = useParams();
-  const moduleList = useSelector(
-    (state: KanbasState) => state.modulesReducer.modules,
-  );
-  const module = useSelector(
-    (state: KanbasState) => state.modulesReducer.module,
-  );
 
+  const [module, setModule] = useState<Module>({
+    _id: "",
+    name: "",
+    description: "",
+    course: "",
+    lessons: [{}],
+  });
+
+  const [moduleList, setModuleList] = useState<Module[]>([]);
+
+  // const moduleList = useSelector(
+  //   (state: KanbasState) => state.modulesReducer.modules,
+  // );
+  // const module = useSelector(
+  //   (state: KanbasState) => state.modulesReducer.module,
+  // );
+
+  const findModulesForCourse = async (courseId) => {
+    const modules = await client.findModulesForCourse(courseId);
+    setModuleList(modules);
+  };
   useEffect(() => {
-    client
-      .findModulesForCourse(courseId)
-      .then((modules) => dispatch(setModules(modules)));
-  }, [courseId, dispatch]);
+    findModulesForCourse(courseId);
+  }, []);
 
   const [selectedModule, setSelectedModule] = useState(moduleList[0]);
 
-  const handleAddModule = () => {
-    client.createModule(courseId, module).then((module) => {
-      dispatch(addModule(module));
-    });
+  const handleAddModule = async () => {
+    try {
+      const newModule = await client.createModule(courseId, module);
+      setModuleList([...moduleList, newModule]);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const handleDeleteModule = (moduleId: string) => {
-    client.deleteModule(moduleId).then((status) => {
-      dispatch(deleteModule(moduleId));
-    });
+  const handleDeleteModule = async (moduleId) => {
+    try {
+      await client.deleteModule(moduleId);
+      setModuleList(moduleList.filter((m) => m._id !== moduleId));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleUpdateModule = async () => {
-    const status = await client.updateModule(module);
-    dispatch(updateModule(module));
+    try {
+      const status = await client.updateModule(module);
+      setModuleList(moduleList.map((m) => (m._id === module._id ? module : m)));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -66,15 +82,13 @@ function ModuleList() {
             <textarea
               placeholder="Module Name"
               value={module.name}
-              onChange={(e) =>
-                dispatch(setModule({ ...module, name: e.target.value }))
-              }
+              onChange={(e) => setModule({ ...module, name: e.target.value })}
             />
             <textarea
               placeholder="Module Description"
               value={module.description}
               onChange={(e) =>
-                dispatch(setModule({ ...module, description: e.target.value }))
+                setModule({ ...module, description: e.target.value })
               }
             />
           </div>
@@ -113,7 +127,7 @@ function ModuleList() {
                   <FaEllipsisV className="ms-2" />
                   <button
                     className="me-2 btn btn-edit"
-                    onClick={() => dispatch(setModule(module))}
+                    onClick={() => setModule(module)}
                   >
                     Edit
                   </button>
@@ -129,7 +143,7 @@ function ModuleList() {
               {selectedModule && selectedModule?._id === module._id && (
                 <ul className="list-group">
                   {module.lessons?.map((lesson) => (
-                    <li key = {lesson._id} className="list-group-item">
+                    <li key={lesson._id} className="list-group-item">
                       <FaEllipsisV className="me-2" />
                       {lesson.name + " - " + lesson.description}
                       <span className="float-end">
