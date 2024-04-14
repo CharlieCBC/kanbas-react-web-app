@@ -19,15 +19,15 @@ function Dashboard({
         <h5>Course</h5>
         <input
           placeholder="Course Name"
-          value={course.name || "New Course"}
+          value={course.name}
           className="form-control mb-1"
-          onChange={(e) => setCourse({ ...course, name: e.target.value })}
+          onChange={(e) => setCourse({ ...course, name: e.target.value || "New Course"})}
         />
         <input
           placeholder="Course Number"
           value={course.number || "NC0001"}
           className="form-control mb-1"
-          onChange={(e) => setCourse({ ...course, number: e.target.value })}
+          onChange={(e) => setCourse({ ...course, number: e.target.value || "NC0001"})}
         />
         <input
           value={course.startDate || ""}
