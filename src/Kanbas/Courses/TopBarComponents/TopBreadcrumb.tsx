@@ -5,11 +5,12 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import db from "../../Database";
 import axios from "axios";
 
+import {COURSES_API} from "../../client";
+
 function TopBreadcrumb() {
   const { courseId } = useParams();
   const { pathname } = useLocation();
 
-  const COURSES_API = "http://localhost:4000/api/courses";
   const [course, setCourse] = useState<any>({ _id: "" });
   const findCourseById = async (courseId?: string) => {
     const response = await axios.get(`${COURSES_API}/${courseId}`);
