@@ -29,8 +29,8 @@ export default function Signin() {
       }
     } catch (err: any) {
       if (err.response && err.response.status === 401) {
-        // Handle 401 Unauthorized error
         console.error("Unauthorized access - please check your credentials.");
+        window.alert("Incorrect username or password");
       }
     }
   };
