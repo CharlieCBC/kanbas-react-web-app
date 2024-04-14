@@ -7,48 +7,55 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import store from "./store";
 import { Provider } from "react-redux";
+import * as client from "./client";
+import { Course } from "./client";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
+const COURSES_API = `${API_BASE}/api/courses`;
+
 function Kanbas() {
-  const COURSES_API = `${API_BASE}/api/courses`;
-  const [courses, setCourses] = useState<any[]>([]);
+
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [course, setCourse] = useState<Course>({
+    _id: "", // id placeholder
+    name: "",
+    number: "",
+    image: "husky.jpg", // default image
+  });
+
   const findAllCourses = async () => {
-    const response = await axios.get(COURSES_API);
-    setCourses(response.data);
+    const courses = await client.findAllCourses();
+    setCourses(courses);
   };
   useEffect(() => {
     findAllCourses();
   }, []);
 
-  const [course, setCourse] = useState({
-    _id: "", // id placeholder
-    name: "",
-    number: "",
-    startDate: "2024-01-10",
-    endDate: "2024-04-30",
-    image: "husky.jpg", // default image
-  });
-
   const addNewCourse = async () => {
-    const response = await axios.post(COURSES_API, course);
-    setCourses([...courses, response.data]);
+    try {
+      const newCourse = await client.createCourse(course);
+      setCourses([...courses, newCourse]);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  const deleteCourse = async (courseId: string) => {
-    const response = await axios.delete(`${COURSES_API}/${courseId}`);
-    setCourses(courses.filter((c) => c._id !== courseId));
+  const deleteCourse = async (course: Course) => {
+    try {
+      await client.deleteCourse(course);
+      setCourses(courses.filter((c) => c._id !== course._id));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const updateCourse = async () => {
-    const response = await axios.put(`${COURSES_API}/${course._id}`, course);
-    setCourses(
-      courses.map((c) => {
-        if (c._id === course._id) {
-          return course;
-        }
-        return c;
-      }),
-    );
+    try {
+      const status = await client.updateCourse(course);
+      setCourses(courses.map((c) => (c._id === course._id ? course : c)));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

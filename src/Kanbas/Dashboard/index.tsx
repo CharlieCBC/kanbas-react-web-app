@@ -19,24 +19,24 @@ function Dashboard({
         <h5>Course</h5>
         <input
           placeholder="Course Name"
-          value={course.name}
+          value={course.name || ""}
           className="form-control mb-1"
           onChange={(e) => setCourse({ ...course, name: e.target.value })}
         />
         <input
           placeholder="Course Number"
-          value={course.number}
+          value={course.number || ""}
           className="form-control mb-1"
           onChange={(e) => setCourse({ ...course, number: e.target.value })}
         />
         <input
-          value={course.startDate}
+          value={course.startDate || ""}
           className="form-control mb-1"
           type="date"
           onChange={(e) => setCourse({ ...course, startDate: e.target.value })}
         />
         <input
-          value={course.endDate}
+          value={course.endDate || ""}
           className="form-control mb-1"
           type="date"
           onChange={(e) => setCourse({ ...course, endDate: e.target.value })}
@@ -95,7 +95,19 @@ function Dashboard({
                       className="btn btn-primary me-2"
                       onClick={(event) => {
                         event.preventDefault();
-                        setCourse(course);
+                        function handleEdit(courseData) {
+                          const formattedCourse = {
+                            ...courseData,
+                            startDate: courseData.startDate
+                              ? courseData.startDate.split("T")[0]
+                              : "",
+                            endDate: courseData.endDate
+                              ? courseData.endDate.split("T")[0]
+                              : "",
+                          };
+                          setCourse(formattedCourse);
+                        }
+                        handleEdit(course);
                       }}
                     >
                       Edit
@@ -105,7 +117,7 @@ function Dashboard({
                       className="btn btn-primary"
                       onClick={(event) => {
                         event.preventDefault();
-                        deleteCourse(course._id);
+                        deleteCourse(course);
                       }}
                     >
                       Delete
