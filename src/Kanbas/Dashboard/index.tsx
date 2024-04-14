@@ -25,7 +25,7 @@ function Dashboard({
         />
         <input
           placeholder="Course Number"
-          value={course.number || "NC0001"}
+          value={course.number}
           className="form-control mb-1"
           onChange={(e) => setCourse({ ...course, number: e.target.value || "NC0001"})}
         />
