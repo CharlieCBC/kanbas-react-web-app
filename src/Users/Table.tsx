@@ -98,8 +98,10 @@ export default function UserTable() {
               <input
                 value={user.username}
                 placeholder="username"
+                className="mb-1"
                 onChange={(e) => setUser({ ...user, username: e.target.value })}
               />
+              <br />
               <input
                 value={user.password}
                 placeholder="password"

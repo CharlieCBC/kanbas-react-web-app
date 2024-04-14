@@ -20,6 +20,7 @@ export default function Signup() {
       <input
         value={user.username}
         placeholder="username"
+        className="mb-2"
         onChange={(e) =>
           setUser({
             ...user,
@@ -27,9 +28,11 @@ export default function Signup() {
           })
         }
       />
+      <br />
       <input
         value={user.password}
         placeholder="password"
+        className="mb-2"
         onChange={(e) =>
           setUser({
             ...user,
@@ -37,7 +40,11 @@ export default function Signup() {
           })
         }
       />
-      <button className="btn btn-success" onClick={signup}> Signup </button>
+      <br />
+      <button className="btn btn-success" onClick={signup}>
+        {" "}
+        Signup{" "}
+      </button>
     </div>
   );
 }

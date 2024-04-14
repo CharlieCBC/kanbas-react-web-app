@@ -23,18 +23,26 @@ export default function Signin() {
       <input
         value={credentials.username}
         placeholder="username"
+        className="mb-2"
         onChange={(e) =>
           setCredentials({ ...credentials, username: e.target.value })
         }
       />
+      <br />
       <input
         value={credentials.password}
+        className="mb-2"
         placeholder="password"
         onChange={(e) =>
           setCredentials({ ...credentials, password: e.target.value })
         }
       />
-      <button className="btn btn-success" onClick={signin}> Signin </button>
+      <br />
+      <button className="btn btn-success mb-2" onClick={signin}>
+        {" "}
+        Signin{" "}
+      </button>
+      <br />
       <Link to="/Kanbas/Account/Signup" className="btn btn-primary">
         Signup
       </Link>
