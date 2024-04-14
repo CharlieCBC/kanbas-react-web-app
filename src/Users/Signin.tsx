@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { User } from "./client";
 import * as client from "./client";
 export default function Signin() {
+  const [error, setError] = useState("");
   const [credentials, setCredentials] = useState<User>({
     _id: "",
     username: "",
@@ -17,7 +18,7 @@ export default function Signin() {
       await client.signin(credentials);
       navigate("/Kanbas/Account/Profile");
     } catch (err: any) {
-      alert(err.response.data.message);
+      setError(err.response.data.message);
     }
   };
 
