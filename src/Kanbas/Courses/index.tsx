@@ -12,10 +12,10 @@ import Grades from "./Grades";
 import "./index.css";
 import { Navigate, Route, Routes } from "react-router";
 import TopBar from "./TopBarComponents/TopBar";
+import { COURSES_API } from "../client";
 
 function Courses() {
   const { courseId } = useParams();
-  const COURSES_API = "http://localhost:4000/api/courses";
   const [course, setCourse] = useState<any>({ _id: "" });
   const findCourseById = async (courseId?: string) => {
     const response = await axios.get(`${COURSES_API}/${courseId}`);
