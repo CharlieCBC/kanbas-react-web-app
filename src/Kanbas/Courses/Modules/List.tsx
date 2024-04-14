@@ -44,6 +44,7 @@ function ModuleList() {
       module.name === "" ||
       module.description === ""
     ) {
+      window.alert("Module name and description are required");
       return;
     }
     try {
@@ -70,6 +71,7 @@ function ModuleList() {
       module.name === "" ||
       module.description === ""
     ) {
+      window.alert("Module name and description are required");
       return;
     }
     try {

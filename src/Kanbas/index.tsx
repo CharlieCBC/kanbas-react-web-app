@@ -37,6 +37,7 @@ function Kanbas() {
       course.name === "" ||
       course.number === ""
     ) {
+      window.alert("Course name and number are required");
       return;
     }
     try {
@@ -63,6 +64,7 @@ function Kanbas() {
       course.name === "" ||
       course.number === ""
     ) {
+      window.alert("Course name and number are required");
       return;
     }
     try {

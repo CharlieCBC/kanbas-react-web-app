@@ -19,6 +19,7 @@ export default function Signin() {
       credentials.username === "" ||
       credentials.password === ""
     ) {
+      window.alert("Username and password are required");
       return;
     }
     await client.signin(credentials);

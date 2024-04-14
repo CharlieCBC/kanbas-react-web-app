@@ -28,6 +28,7 @@ export default function Profile() {
       profile.username === "" ||
       profile.password === ""
     ) {
+      window.alert("Please enter username and password");
       return;
     }
     await client.updateUser(profile);

@@ -59,6 +59,7 @@ export default function UserTable() {
       user.username === "" ||
       user.password === ""
     ) {
+      window.alert("Please enter username and password");
       return;
     }
     try {

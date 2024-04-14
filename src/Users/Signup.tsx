@@ -12,6 +12,7 @@ export default function Signup() {
       user.username === "" ||
       user.password === ""
     ) {
+      setError("Please enter username and password");
       return;
     }
     try {
