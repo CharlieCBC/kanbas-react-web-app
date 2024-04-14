@@ -22,8 +22,17 @@ export default function Signin() {
       window.alert("Username and password are required");
       return;
     }
-    await client.signin(credentials);
-    navigate("/Kanbas/Account/Profile");
+    try {
+      const response = await client.signin(credentials);
+      if (response) {
+        navigate("/Kanbas/Account/Profile");
+      }
+    } catch (err: any) {
+      if (err.response && err.response.status === 401) {
+        // Handle 401 Unauthorized error
+        console.error("Unauthorized access - please check your credentials.");
+      }
+    }
   };
 
   return (

@@ -26,6 +26,15 @@ export default function UserTable() {
   };
 
   const createUser = async () => {
+    if (
+      !user.username ||
+      !user.password ||
+      user.username === "" ||
+      user.password === ""
+    ) {
+      window.alert("Please enter username and password");
+      return;
+    }
     try {
       const newUser = await client.createUser(user);
       setUsers([newUser, ...users]);
