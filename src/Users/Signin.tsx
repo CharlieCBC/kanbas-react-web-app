@@ -13,6 +13,14 @@ export default function Signin() {
   });
   const navigate = useNavigate();
   const signin = async () => {
+    if (
+      !credentials.username ||
+      !credentials.password ||
+      credentials.username === "" ||
+      credentials.password === ""
+    ) {
+      return;
+    }
     await client.signin(credentials);
     navigate("/Kanbas/Account/Profile");
   };
