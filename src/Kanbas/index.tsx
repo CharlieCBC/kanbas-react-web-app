@@ -14,7 +14,6 @@ const API_BASE = process.env.REACT_APP_API_BASE;
 const COURSES_API = `${API_BASE}/api/courses`;
 
 function Kanbas() {
-
   const [courses, setCourses] = useState<Course[]>([]);
   const [course, setCourse] = useState<Course>({
     _id: "", // id placeholder
@@ -32,6 +31,14 @@ function Kanbas() {
   }, []);
 
   const addNewCourse = async () => {
+    if (
+      !course.name ||
+      !course.number ||
+      course.name === "" ||
+      course.number === ""
+    ) {
+      return;
+    }
     try {
       const newCourse = await client.createCourse(course);
       setCourses([...courses, newCourse]);
@@ -50,6 +57,14 @@ function Kanbas() {
   };
 
   const updateCourse = async () => {
+    if (
+      !course.name ||
+      !course.number ||
+      course.name === "" ||
+      course.number === ""
+    ) {
+      return;
+    }
     try {
       const status = await client.updateCourse(course);
       setCourses(courses.map((c) => (c._id === course._id ? course : c)));

@@ -38,6 +38,14 @@ function ModuleList() {
   const [selectedModule, setSelectedModule] = useState(moduleList[0]);
 
   const handleAddModule = async () => {
+    if (
+      !module.name ||
+      !module.description ||
+      module.name === "" ||
+      module.description === ""
+    ) {
+      return;
+    }
     try {
       const newModule = await client.createModule(courseId, module);
       setModuleList([...moduleList, newModule]);
@@ -56,6 +64,14 @@ function ModuleList() {
   };
 
   const handleUpdateModule = async () => {
+    if (
+      !module.name ||
+      !module.description ||
+      module.name === "" ||
+      module.description === ""
+    ) {
+      return;
+    }
     try {
       const status = await client.updateModule(module);
       setModuleList(moduleList.map((m) => (m._id === module._id ? module : m)));
