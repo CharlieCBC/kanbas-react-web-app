@@ -22,6 +22,14 @@ export default function Profile() {
     setProfile(account);
   };
   const save = async () => {
+    if (
+      !profile.username ||
+      !profile.password ||
+      profile.username === "" ||
+      profile.password === ""
+    ) {
+      return;
+    }
     await client.updateUser(profile);
     navigate("/Kanbas/Account/Signin");
   };

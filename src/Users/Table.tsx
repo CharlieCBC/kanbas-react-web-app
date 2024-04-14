@@ -53,6 +53,14 @@ export default function UserTable() {
   };
 
   const updateUser = async () => {
+    if (
+      !user.username ||
+      !user.password ||
+      user.username === "" ||
+      user.password === ""
+    ) {
+      return;
+    }
     try {
       const status = await client.updateUser(user);
       setUsers(users.map((u) => (u._id === user._id ? user : u)));
