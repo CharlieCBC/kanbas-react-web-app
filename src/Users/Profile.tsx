@@ -13,14 +13,19 @@ export default function Profile() {
     role: "USER",
   });
   const navigate = useNavigate();
+
   const fetchProfile = async () => {
     const account = await client.profile();
-    if (account.dob) {
-      const date = new Date(account.dob);
-      account.dob = date.toISOString().split("T")[0];
+    const aId = account._id;
+    const user = await client.findUserById(aId);
+    if (user.dob) {
+      const date = new Date(user.dob);
+      user.dob = date.toISOString().split("T")[0];
     }
-    setProfile(account);
+    console.log(user);
+    setProfile(user);
   };
+
   const save = async () => {
     if (
       !profile.username ||
@@ -32,16 +37,19 @@ export default function Profile() {
       return;
     }
     await client.updateUser(profile);
-    navigate("/Kanbas/Account/Signin");
+    await fetchProfile();
+    window.alert("Profile updated");
   };
+
   const signout = async () => {
     await client.signout();
     navigate("/Kanbas/Account/Signin");
   };
 
   useEffect(() => {
-    fetchProfile();
+    fetchProfile().then();
   }, []);
+
   return (
     <div>
       <h1>Profile</h1>
