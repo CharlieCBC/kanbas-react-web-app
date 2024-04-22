@@ -1,0 +1,62 @@
+.course-card-col {
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 300px; /* Fixed width for each card */
+    margin-right: 30px; /* Spacing between cards */
+}
+
+.course-card {
+    margin-bottom: 30px; /* Vertical spacing between cards */
+}
+
+/* Style to add left spacing next to the navigation sidebar */
+.left-spacing {
+    margin-left: 30px; /* Adjust as needed to match the sidebar width */
+}
+
+.card-img-top {
+    max-height: 150px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: black;
+    display: block; /* Ensures the link occupies the entire card area */
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+.card-link:hover .card-img-top {
+    opacity: 0.8;
+}
+
+.card {
+    cursor: pointer; /* Indicates the whole card is clickable */
+    overflow: hidden; /* Ensures no content spills out */
+}
+
+.card-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 0; /* Removes the default margin */
+}
+
+.card-text {
+    margin-bottom: 0; /* Removes the default margin for consistency */
+}
+
+.card-text-main {
+    font-size: 1em;
+}
+
+.card-text-sub {
+    font-size: 0.8em;
+}
+
+.card-text,
+.card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
